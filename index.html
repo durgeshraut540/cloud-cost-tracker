@@ -3,35 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Cost Optimization Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <title>Cloud Cost Optimization Tracker</title>
 </head>
 <body>
-
     <div class="container">
         <h1>💰 Cloud Cost Optimization Tracker</h1>
 
-        <div class="summary-box">
+        <div class="summary">
             <h2>Total Lifetime Savings</h2>
-            <p id="total-savings" class="savings-amount">$0.00</p>
-            <small>Achieved by Cloud Team</small>
+            <div id="total-savings" class="savings-amount">$0.00</div>
         </div>
-
-        <div class="goal-box">
-            <h3>Annual Goal: $100,000</h3>
-            <div class="progress-bar-container">
-                <div id="progress-bar" class="progress-bar"></div>
-            </div>
-            <p id="goal-progress-text"></p>
-        </div>
-
-        <hr>
-
-        <h2>Recent Decommissioning Entries</h2>
         
+        <div class="progress-container">
+            <h3>Annual Goal: $100,000</h3>
+            <div class="progress-bar-shell">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+            <p id="progress-text">0.0% of Annual Goal Achieved</p>
+        </div>
+
+        <h2>Log a New Saving</h2>
         <form id="tracker-form">
+            
             <div class="form-control">
-                <label for="provider">Cloud Provider:</label>
+                <label for="provider">Provider:</label>
                 <select id="provider" required>
                     <option value="AWS">AWS</option>
                     <option value="Azure">Azure</option>
@@ -44,6 +40,26 @@
                 <label for="cost">Monthly Cost Saved ($):</label>
                 <input type="number" id="cost" placeholder="e.g., 450.50" step="0.01" required>
             </div>
+            
+            <div class="form-control">
+                <label for="resourceGroup">Resource Group:</label>
+                <input type="text" id="resourceGroup" placeholder="e.g., prod-web-rg" required>
+            </div>
+
+            <div class="form-control">
+                <label for="subscription">Subscription:</label>
+                <input type="text" id="subscription" placeholder="e.g., Dev-Subscription-1" required>
+            </div>
+
+            <div class="form-control">
+                <label for="owner">Owner:</label>
+                <input type="text" id="owner" placeholder="e.g., John Doe" required>
+            </div>
+
+            <div class="form-control">
+                <label for="crNumber">CR Number:</label>
+                <input type="text" id="crNumber" placeholder="e.g., CR-12345" required>
+            </div>
 
             <div class="form-control">
                 <label for="resource">Resource/Reason:</label>
@@ -53,13 +69,16 @@
             <button type="submit" class="btn">Log Saving</button>
         </form>
 
-        <hr>
-
+        <h2>Recent Decommissions</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Date</th>
+                    <th>Date of Decommission</th>
                     <th>Provider</th>
+                    <th>Resource Group</th>
+                    <th>Subscription</th>
+                    <th>Owner</th>
+                    <th>CR Number</th>
                     <th>Cost Saved</th>
                     <th>Resource/Reason</th>
                     <th>Action</th>
@@ -69,7 +88,7 @@
                 </tbody>
         </table>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
